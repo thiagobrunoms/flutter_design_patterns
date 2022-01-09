@@ -12,38 +12,76 @@ class VideoServicePage extends StatefulWidget {
 }
 
 class _VideoServicePageState extends State<VideoServicePage> {
+  TextEditingController controller = TextEditingController();
   VideoService videoService = VideoProxyService(YouTubeVideoService());
+  List<Widget> videosList = [];
+  bool _isSending = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Videos'),
+        title: const Text('Videos'),
       ),
-      body: FutureBuilder<List<MyYouTubeVideo>>(
-        future: videoService.loadVideo("Flutter"),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return Center(child: CircularProgressIndicator());
-          }
-
-          List<MyYouTubeVideo> videos = snapshot.data!;
-
-          return ListView.builder(itemBuilder: (context, index) {
-            return Card(
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Text('Title'),
-                      Text(videos[index].title),
-                    ],
-                  )
-                ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              TextField(
+                controller: controller,
+                decoration: const InputDecoration(
+                  label: Text('Busca'),
+                  hintText: 'Keyword',
+                ),
               ),
-            );
-          });
-        },
+              !_isSending
+                  ? buildContent()
+                  : const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(),
+                    ),
+              ElevatedButton(onPressed: loadVideos, child: const Text('Buscar'))
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildContent() {
+    return Column(
+      children: videosList,
+    );
+  }
+
+  Future<void> loadVideos() async {
+    setState(() {
+      _isSending = true;
+    });
+
+    List<MyYouTubeVideo> videos =
+        await videoService.loadVideo(controller.value.text);
+
+    videosList = videos.map((eachVideo) => buildVideoCard(eachVideo)).toList();
+    setState(() {
+      _isSending = false;
+      videosList;
+    });
+  }
+
+  Widget buildVideoCard(MyYouTubeVideo video) {
+    return Card(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Container(width: 100, child: const Text('Title: ')),
+              Expanded(child: Text(video.title)),
+            ],
+          )
+        ],
       ),
     );
   }

@@ -34,7 +34,7 @@ class _AbstractFactoryMainPageState extends State<AbstractFactoryMainPage> {
       isSending = true;
     });
 
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 3), () {
       setState(() {
         isSending = false;
       });

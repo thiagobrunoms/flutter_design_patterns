@@ -11,10 +11,14 @@ class VideoProxyService extends VideoService {
   Future<List<MyYouTubeVideo>> loadVideo(String searchKey) async {
     print('Buscando video por $searchKey');
     if (cache.containsKey(searchKey)) {
+      print('Retornando via cache');
       return Future.value(cache[searchKey]);
     }
 
-    print('Video não encontrado!');
-    return videoService.loadVideo(searchKey);
+    print('Video não encontrado! Repassando para serviço remoto...');
+    List<MyYouTubeVideo> videos = await videoService.loadVideo(searchKey);
+    cache[searchKey] = videos;
+
+    return videos;
   }
 }

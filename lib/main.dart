@@ -4,6 +4,8 @@ import 'package:flutter_design_patterns/design_patterns/abstract_factory/main_pa
 import 'dart:io' show Platform;
 
 import 'package:flutter_design_patterns/design_patterns/abstract_factory/material_factory.dart';
+import 'package:flutter_design_patterns/design_patterns/proxy/video_page.dart';
+import 'package:flutter_design_patterns/design_patterns/template_method/page/employee_list_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +14,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,8 +21,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: AbstractFactoryMainPage(
-            widgetFactory:
-                Platform.isAndroid ? MaterialFactory() : CupertinoFactory()));
+        home: const VideoServicePage());
+    // home: AbstractFactoryMainPage(
+    //     widgetFactory:
+    //         Platform.isAndroid ? MaterialFactory() : CupertinoFactory()));
   }
 }
