@@ -30,7 +30,7 @@ class UserSharedPreferencesStorage
   }
 
   @override
-  Future<List<User>> read(K, key) {
+  Future<List<User>> read(String key) {
     // TODO: implement read
     throw UnimplementedError();
   }
