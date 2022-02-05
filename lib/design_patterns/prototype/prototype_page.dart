@@ -45,7 +45,7 @@ class _PrototypePageState extends State<PrototypePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Prototype Example'),
+        title: const Text('Prototype Example'),
       ),
       body: SingleChildScrollView(
         child: Column(

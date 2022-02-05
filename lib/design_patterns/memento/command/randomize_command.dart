@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_patterns/design_patterns/memento/command/i_command.dart';
 import 'package:flutter_design_patterns/design_patterns/memento/memento_state/i_memento.dart';
-import 'package:flutter_design_patterns/design_patterns/memento/memento_state/originator.dart';
+import 'package:flutter_design_patterns/design_patterns/memento/memento_state/editor_originator.dart';
 import 'dart:math' as math;
 
 class RandomizeCommand implements ICommand {
@@ -31,6 +31,7 @@ class RandomizeCommand implements ICommand {
 
   @override
   void redo() {
+    print('redoing...');
     editor.restore(_repeat);
   }
 }

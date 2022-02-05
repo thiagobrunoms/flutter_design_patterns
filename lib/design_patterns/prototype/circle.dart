@@ -12,7 +12,7 @@ class Circle extends Shape {
 
   @override
   Shape clone() {
-    return Circle.clone(this, this.radius);
+    return Circle.clone(this, radius);
   }
 
   @override

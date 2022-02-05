@@ -1,3 +1,3 @@
-abstract class ICommand<T, R> {
-  Future<R> execute(T entity);
+abstract class ICommand<TParam, TReturn> {
+  Future<TReturn?> execute({TParam? param});
 }

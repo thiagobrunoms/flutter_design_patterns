@@ -22,7 +22,7 @@ class ShapeColumn extends StatelessWidget {
         Row(
           children: [
             shape.render(),
-            SizedBox(
+            const SizedBox(
               width: 100,
             ),
             cloned,
@@ -32,14 +32,14 @@ class ShapeColumn extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: onClone,
-              child: Text('Clone'),
+              child: const Text('Clone'),
             ),
-            SizedBox(
+            const SizedBox(
               width: 100,
             ),
             ElevatedButton(
               onPressed: onRandom,
-              child: Text('Randon'),
+              child: const Text('Randon'),
             ),
           ],
         )

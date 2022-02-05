@@ -1,6 +1,6 @@
 class ProductOrderResult {
   bool finalResult;
-  String? message;
+  String message;
 
-  ProductOrderResult({required this.finalResult, this.message});
+  ProductOrderResult({required this.finalResult, this.message = ''});
 }

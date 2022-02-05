@@ -34,7 +34,7 @@ class Rectangle extends Shape {
           width: width,
           height: height,
           decoration: BoxDecoration(color: color, shape: BoxShape.rectangle),
-          child: Icon(Icons.share, color: Colors.white),
+          child: const Icon(Icons.share, color: Colors.white),
         ),
       ),
     );

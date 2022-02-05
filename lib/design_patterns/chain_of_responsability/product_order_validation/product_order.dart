@@ -15,7 +15,8 @@ abstract class ProductOrder {
   ProductOrderResult? checkNext(Product product,
       {Map<String, dynamic>? params}) {
     if (next == null) {
-      return ProductOrderResult(finalResult: true);
+      return ProductOrderResult(
+          finalResult: true, message: 'Produto adicionado com sucesso!');
     }
 
     return next?.check(product, params: params);

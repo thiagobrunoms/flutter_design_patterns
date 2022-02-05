@@ -10,11 +10,12 @@ abstract class Shape {
     color = shape.color;
   }
 
-  Shape clone();
   void randomProperties() {
     color = Color.fromARGB(math.Random().nextInt(255),
         math.Random().nextInt(255), math.Random().nextInt(255), 1);
   }
+
+  Shape clone();
 
   Widget render();
 }

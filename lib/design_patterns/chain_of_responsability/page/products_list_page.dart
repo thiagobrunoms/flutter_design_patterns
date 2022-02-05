@@ -15,6 +15,7 @@ class _ProductListPageState extends State<ProductListPage> {
   ProductService productService = ProductService();
   CartService cartService = CartService();
   Map<Product, bool?> checkedProduct = {};
+  String? messageResult;
 
   @override
   Widget build(BuildContext context) {
@@ -44,27 +45,37 @@ class _ProductListPageState extends State<ProductListPage> {
   }
 
   Widget _buildProductItem(Product product) {
+    ProductOrderResult? result;
+
     return StatefulBuilder(builder: (context, setState) {
-      return Row(
-        children: [
-          Checkbox(
-              value: checkedProduct[product],
-              onChanged: (checked) {
-                if (checked != null && checked) {
-                  ProductOrderResult? result = cartService.addProductToOrder(
-                      product,
-                      params: {'quantity': 13, 'items': 2});
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Checkbox(
+                    value: checkedProduct[product],
+                    onChanged: (checked) {
+                      if (checked != null && checked) {
+                        result = cartService.addProductToOrder(product,
+                            params: {'quantity': 13, 'items': 2});
 
-                  print(result?.finalResult);
-                  print(result?.message);
-                }
+                        print(
+                            'result: ${result != null ? result?.message : ''}');
+                      }
 
-                setState(() {
-                  checkedProduct[product] = checked!;
-                });
-              }),
-          Text(product.name)
-        ],
+                      setState(() {
+                        messageResult = result?.message;
+                        checkedProduct[product] = checked!;
+                      });
+                    }),
+                Text(product.name)
+              ],
+            ),
+            Text("Resultado: ${messageResult ?? ''}"),
+          ],
+        ),
       );
     });
   }

@@ -10,11 +10,14 @@ class Editor {
     state = Shape.initial();
   }
 
+  //save
   IMemento makeSnapshot() {
+    //The state is saved inside another class
     return Memento(state);
   }
 
   void restore(IMemento memento) {
+    //Originator also restore state
     state = memento.getState();
   }
 }

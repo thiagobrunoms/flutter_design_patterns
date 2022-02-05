@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_design_patterns/design_patterns/memento/command/command_history.dart';
 import 'package:flutter_design_patterns/design_patterns/memento/command/i_command.dart';
 import 'package:flutter_design_patterns/design_patterns/memento/command/randomize_command.dart';
-import 'package:flutter_design_patterns/design_patterns/memento/memento_state/originator.dart';
+import 'package:flutter_design_patterns/design_patterns/memento/memento_state/editor_originator.dart';
 import 'package:flutter_design_patterns/design_patterns/memento/view/shape_container.dart';
 
 class MementoShapePageView extends StatefulWidget {
@@ -20,22 +20,22 @@ class _ShapePageViewState extends State<MementoShapePageView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Memento'),
+        title: const Text('Memento'),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             ElevatedButton(
               onPressed: _randomShape,
-              child: Text('Criar shape'),
+              child: const Text('Criar shape'),
             ),
             ElevatedButton(
               onPressed: undoCommand,
-              child: Text('Desfazer'),
+              child: const Text('Desfazer'),
             ),
             ElevatedButton(
               onPressed: redoCommand,
-              child: Text('Refazer'),
+              child: const Text('Refazer'),
             ),
             ShapeContainer(shape: editor.state)
           ],

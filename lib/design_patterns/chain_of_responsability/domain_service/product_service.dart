@@ -14,7 +14,7 @@ class ProductService {
         name: 'Cereais',
         price: 7,
         available: 16,
-        availableAt: DateTime(2022, 1, 28),
+        availableAt: DateTime(2022, 1, 30),
         minItens: 2,
       ),
       Product(
