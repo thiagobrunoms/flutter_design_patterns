@@ -30,7 +30,7 @@ class _UserListState extends State<UserList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flyweight'),
+        title: const Text('Flyweight'),
       ),
       body: ListView.builder(
         itemCount: userslist?.length,

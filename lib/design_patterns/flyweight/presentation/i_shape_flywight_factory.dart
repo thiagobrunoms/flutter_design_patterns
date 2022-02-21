@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_design_patterns/design_patterns/flyweight/models/user.dart';
 import 'package:flutter_design_patterns/design_patterns/flyweight/presentation/i_shape.dart';
 import 'package:flutter_design_patterns/design_patterns/flyweight/presentation/shape_factory.dart';
